@@ -1,0 +1,13 @@
+.NotFoundPage {
+  text-align: center;
+}
+
+.errorNumber {
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.errorText {
+  font-size: 32px;
+  font-weight: 400;
+}

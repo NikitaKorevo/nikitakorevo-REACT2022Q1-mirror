@@ -1,0 +1,16 @@
+.SearchBar {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #444c56;
+  margin: 10px 0;
+  width: 200px;
+  padding-left: 30px;
+  height: 26px;
+  background-image: url('../../assets/svg/search.svg');
+  background-repeat: no-repeat;
+  background-position: 5px 100%;
+}
+
+.SearchBar:focus {
+  border: 1px solid #ec775c;
+}

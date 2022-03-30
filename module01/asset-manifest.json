@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.e246185f.css",
-    "main.js": "/static/js/main.c9a2460c.js",
-    "static/media/user-avatar.svg": "/static/media/user-avatar.9296aa68e93c15a2fb3d0e6cb7b3b206.svg",
-    "index.html": "/index.html",
-    "static/media/search.svg": "/static/media/search.35867ea3ee23494019cf.svg",
-    "main.e246185f.css.map": "/static/css/main.e246185f.css.map",
-    "main.c9a2460c.js.map": "/static/js/main.c9a2460c.js.map"
+    "main.css": "/nikitakorevo-REACT2022Q1/module01/static/css/main.8306abf1.css",
+    "main.js": "/nikitakorevo-REACT2022Q1/module01/static/js/main.72a75a52.js",
+    "static/media/user-avatar.svg": "/nikitakorevo-REACT2022Q1/module01/static/media/user-avatar.a0345aea9ef87e1b76b43ff69e185f15.svg",
+    "index.html": "/nikitakorevo-REACT2022Q1/module01/index.html",
+    "static/media/search.svg": "/nikitakorevo-REACT2022Q1/module01/static/media/search.b4c952303031e4aa77db.svg",
+    "main.8306abf1.css.map": "/nikitakorevo-REACT2022Q1/module01/static/css/main.8306abf1.css.map",
+    "main.72a75a52.js.map": "/nikitakorevo-REACT2022Q1/module01/static/js/main.72a75a52.js.map"
   },
   "entrypoints": [
-    "static/css/main.e246185f.css",
-    "static/js/main.c9a2460c.js"
+    "static/css/main.8306abf1.css",
+    "static/js/main.72a75a52.js"
   ]
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './MainPage.module.css';
+import styles from './mainPage.module.css';
 import UserCard from '../../components/UserCard/UserCard';
 import userData from '../../data/userData';
 import IUserCard from '../../types/interfaces';
@@ -12,9 +12,9 @@ class MainPage extends React.Component {
     });
 
     return (
-      <div className={s.MainPage}>
+      <div className={styles.mainPage}>
         <SearchBar />
-        <ul className={s.userCards}>{userCards}</ul>
+        <ul className={styles.userCards}>{userCards}</ul>
       </div>
     );
   }

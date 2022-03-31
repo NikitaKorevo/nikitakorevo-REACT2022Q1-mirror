@@ -1,4 +1,4 @@
-.SearchBar {
+.searchBar {
   outline: none;
   border-radius: 5px;
   border: 1px solid #444c56;
@@ -11,6 +11,6 @@
   background-position: 5px 100%;
 }
 
-.SearchBar:focus {
+.searchBar:focus {
   border: 1px solid #ec775c;
 }

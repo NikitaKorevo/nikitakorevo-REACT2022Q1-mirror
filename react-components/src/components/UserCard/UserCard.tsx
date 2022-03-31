@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './UserCard.module.css';
+import styles from './userCard.module.css';
 import IUserCard from '../../types/interfaces';
 import avatar from '../../assets/svg/user-avatar.svg';
 
@@ -17,10 +17,10 @@ class UserCard extends React.Component<IUserCardProps> {
     } = this.props.userCard;
 
     return (
-      <li className={s.UserCard}>
-        <img className={s.avatar} src={avatar} alt="avatar" />
-        <h2 className={s.name}>{name}</h2>
-        <ul className={s.contacts}>
+      <li className={styles.userCard}>
+        <img className={styles.avatar} src={avatar} alt="avatar" />
+        <h2 className={styles.name}>{name}</h2>
+        <ul className={styles.contacts}>
           <li>email: {email}</li>
           <li>phone: {phone}</li>
           <li>city: {city}</li>

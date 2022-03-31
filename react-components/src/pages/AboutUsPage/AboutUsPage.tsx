@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './AboutUsPage.module.css';
+import styles from './aboutUsPage.module.css';
 
 class AboutUsPage extends React.Component {
   render(): JSX.Element {
-    return <div className={s.AboutUsPage}>AboutUsPage</div>;
+    return <div className={styles.aboutUsPage}>AboutUsPage</div>;
   }
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import s from './NotFoundPage.module.css';
+import styles from './notFoundPage.module.css';
 
 class NotFoundPage extends React.Component {
   render(): JSX.Element {
     return (
-      <div className={s.NotFoundPage}>
-        <h2 className={s.errorNumber}>404</h2>
-        <h1 className={s.errorText}>Page not found</h1>
+      <div className={styles.notFoundPage}>
+        <h2 className={styles.errorNumber}>404</h2>
+        <h1 className={styles.errorText}>Page not found</h1>
       </div>
     );
   }

@@ -1,11 +1,11 @@
-.Header {
+.header {
   display: flex;
   align-items: center;
   height: 50px;
   background-color: #2d333b;
 }
 
-.Header__nav {
+.header__nav {
   display: flex;
   width: calc(100% - 30px);
   max-width: 1400px;

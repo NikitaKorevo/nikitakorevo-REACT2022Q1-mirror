@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './SearchBar.module.css';
+import styles from './searchBar.module.css';
 
 interface ISearchBarState {
   inputValue: string;
@@ -18,22 +18,22 @@ class SearchBar extends React.Component<object, ISearchBarState> {
     this.setState({ inputValue: initialInputValue });
   }
 
-  componentWillUnmount(): void {
+  componentDidUpdate(): void {
     localStorage.setItem('inputValue', this.state.inputValue);
   }
 
-  changeInputValue(e: React.ChangeEvent<HTMLInputElement>): void {
+  changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     this.setState({ inputValue: inputValue });
-  }
+  };
 
   render(): JSX.Element {
     return (
       <input
-        className={s.SearchBar}
+        className={styles.searchBar}
         type="search"
         value={this.state.inputValue}
-        onChange={(e) => this.changeInputValue(e)}
+        onChange={this.changeInputValue}
       />
     );
   }

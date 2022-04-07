@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './userCard.module.css';
-import IUserCard from '../../types/interfaces';
+import { IUserCard } from '../../types/interfaces';
 import avatar from '../../assets/svg/user-avatar.svg';
 
 interface IUserCardProps {

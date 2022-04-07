@@ -19,6 +19,11 @@ class Header extends React.Component {
                 about us
               </NavLink>
             </li>
+            <li className="nav__item">
+              <NavLink className="nav__link" to={ROUTES.FORM}>
+                form
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>

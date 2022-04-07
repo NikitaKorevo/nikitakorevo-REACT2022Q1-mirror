@@ -1,0 +1,61 @@
+.form {
+  display: inline-block;
+  width: 450px;
+  border-left: 1px solid #444c56;
+  border-radius: 10px;
+  padding: 20px 20px;
+  margin: 15px 0;
+}
+
+.title {
+  margin: 0 0 20px;
+}
+
+.formGroup {
+  padding-bottom: 10px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+.error {
+  width: 100%;
+  font-size: 12px;
+  color: #ff0000;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.switch {
+}
+
+.switchLabel {
+}
+
+.switchInput {
+  display: none;
+}
+
+.switchInput:checked + .switchSliderContainer .switchSlider {
+  margin: 0 0 0 auto;
+  background-color: orange;
+}
+
+.switchSliderContainer {
+  display: inline-block;
+  width: 50px;
+  height: 12px;
+  background-color: #444c56;
+}
+
+.switchSlider {
+  display: block;
+  width: 25px;
+  height: 12px;
+  background-color: #707780;
+}
+
+.switchSlider:hover {
+  cursor: pointer;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './mainPage.module.css';
 import UserCard from '../../components/UserCard/UserCard';
 import userData from '../../data/userData';
-import IUserCard from '../../types/interfaces';
+import { IUserCard } from '../../types/interfaces';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 class MainPage extends React.Component {

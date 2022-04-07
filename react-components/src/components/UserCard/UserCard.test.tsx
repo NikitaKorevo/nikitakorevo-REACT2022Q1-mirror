@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import UserCard from './UserCard';
-import IUserCard from '../../types/interfaces';
+import { IUserCard } from '../../types/interfaces';
 
 test('correct display of props', () => {
   const userData: IUserCard = {

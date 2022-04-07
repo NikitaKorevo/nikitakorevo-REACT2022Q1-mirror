@@ -1,4 +1,4 @@
-import IUserCard from '../types/interfaces';
+import { IUserCard } from '../types/interfaces';
 
 const userData: IUserCard[] = [
   {

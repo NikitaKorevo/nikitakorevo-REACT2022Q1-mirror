@@ -1,4 +1,4 @@
-interface IUserCard {
+export interface IUserCard {
   id: number;
   name: string;
   username: string;
@@ -22,4 +22,10 @@ interface IUserCard {
   };
 }
 
-export default IUserCard;
+export interface IDeliveryCard {
+  name: string;
+  date: string;
+  state: string;
+  photo: File;
+  shares: boolean;
+}

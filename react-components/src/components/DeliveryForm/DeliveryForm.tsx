@@ -52,7 +52,6 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
       isDataProcessingInputValid,
     }).every((value) => value === null || value === true);
 
-    console.log(areAllValidityValuesNotFalsy);
     if (areAllValidityValuesNotFalsy) {
       this.setState({ isSubmitButtonDisabled: false });
     } else {
@@ -160,6 +159,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
             type="text"
             placeholder="Michael"
             name="nameInput"
+            data-testid="nameInput"
             onInput={() => this.hideErrorFromElement('isNameInputValid')}
           />
           <p className={styles.error} hidden={this.state.isNameInputValid === false ? false : true}>
@@ -172,6 +172,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
           <input
             type="date"
             name="dateInput"
+            data-testid="dateInput"
             onInput={() => this.hideErrorFromElement('isDateInputValid')}
           />
           <p className={styles.error} hidden={this.state.isDateInputValid === false ? false : true}>
@@ -184,6 +185,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
           <select
             defaultValue="Choose state"
             name="stateSelect"
+            data-testid="stateSelect"
             onChange={() => this.hideErrorFromElement('isStateSelectValid')}
           >
             <option value="Choose state" disabled>
@@ -207,6 +209,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
           <input
             type="file"
             name="photoInput"
+            data-testid="photoInput"
             onChange={() => this.hideErrorFromElement('isFileInputValid')}
           />
           <p className={styles.error} hidden={this.state.isFileInputValid === false ? false : true}>
@@ -221,6 +224,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
             type="checkbox"
             name="sharesInput"
             id="sharesInput"
+            data-testid="sharesInput"
             onChange={() => this.hideErrorFromElement('isSharesInputValid')}
           />
           <div className={styles.switchSliderContainer}>
@@ -240,6 +244,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
           <input
             type="checkbox"
             name="dataProcessingInput"
+            data-testid="dataProcessingInput"
             onChange={() => this.hideErrorFromElement('isDataProcessingInputValid')}
           />
           <p
@@ -253,6 +258,7 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
         <button
           type="button"
           name="submitButton"
+          data-testid="submitButton"
           disabled={this.state.isSubmitButtonDisabled}
           onClick={this.handleClickSubmitButton}
         >

@@ -17,7 +17,7 @@ class DeliveryCard extends React.Component<IDeliveryCardProps> {
           <li>Name: {name}</li>
           <li>Date: {date}</li>
           <li>state: {state}</li>
-          <li>agree to receive shares: {shares ? 'true' : 'false'}</li>
+          <li>agree to receive shares: {`${shares}`}</li>
         </ul>
       </li>
     );

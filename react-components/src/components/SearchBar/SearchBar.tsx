@@ -1,12 +1,16 @@
 import React from 'react';
 import styles from './searchBar.module.css';
 
+interface ISearchBarProps {
+  setSearchBarValue: (key: string) => void;
+}
+
 interface ISearchBarState {
   inputValue: string;
 }
 
-class SearchBar extends React.Component<object, ISearchBarState> {
-  constructor(props: object) {
+class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
+  constructor(props: ISearchBarProps) {
     super(props);
     this.state = {
       inputValue: '',
@@ -16,6 +20,7 @@ class SearchBar extends React.Component<object, ISearchBarState> {
   componentDidMount(): void {
     const initialInputValue = localStorage.getItem('inputValue') || '';
     this.setState({ inputValue: initialInputValue });
+    this.props.setSearchBarValue(initialInputValue);
   }
 
   componentDidUpdate(): void {
@@ -27,6 +32,12 @@ class SearchBar extends React.Component<object, ISearchBarState> {
     this.setState({ inputValue: inputValue });
   };
 
+  handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+      this.props.setSearchBarValue(this.state.inputValue);
+    }
+  };
+
   render(): JSX.Element {
     return (
       <input
@@ -34,6 +45,8 @@ class SearchBar extends React.Component<object, ISearchBarState> {
         type="search"
         value={this.state.inputValue}
         onChange={this.changeInputValue}
+        placeholder="Morty Smith"
+        onKeyUp={this.handleKeyUpInput}
       />
     );
   }

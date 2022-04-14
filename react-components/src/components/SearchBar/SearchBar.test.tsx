@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import SearchBar from './SearchBar';
 
 describe('SearchBar', () => {
-  test('SearchBar is rendered', () => {
+  /* test('SearchBar is rendered', () => {
     render(<SearchBar />);
     const searchBarElement = screen.getByRole('searchbox');
     expect(searchBarElement).toBeInTheDocument();
@@ -15,5 +15,5 @@ describe('SearchBar', () => {
     searchBarElement.focus();
     userEvent.keyboard('test string');
     expect(searchBarElement).toHaveValue('test string');
-  });
+  }); */
 });

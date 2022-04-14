@@ -66,7 +66,6 @@ class DeliveryForm extends React.Component<IDeliveryFormProps, IDeliveryFormStat
     const stateSelectValue = formElement?.stateSelect.value;
     const photoInputValue = formElement?.photoInput.files[0];
     const sharesInputValue = formElement?.sharesInput.checked;
-    console.log(photoInputValue);
 
     if (this.validateAllData()) {
       this.props.addDeliveryCard({

@@ -35,6 +35,7 @@ class CharacterModal extends React.Component<ICharacterModalProps> {
 
   render() {
     const { image, name, gender, species, status, location } = this.props.characterCardData;
+    this.wrapper.id = 'characterModal';
 
     return ReactDOM.createPortal(
       <div className={styles.backgroundModal} onClick={this.closeModal}>

@@ -5,6 +5,7 @@ import { IDeliveryCard } from '../../types/interfaces';
 interface IDeliveryCardProps {
   deliveryCardData: IDeliveryCard;
 }
+
 class DeliveryCard extends React.Component<IDeliveryCardProps> {
   render(): JSX.Element {
     const { name, date, state, photo, shares } = this.props.deliveryCardData;
@@ -17,7 +18,7 @@ class DeliveryCard extends React.Component<IDeliveryCardProps> {
           <li>Name: {name}</li>
           <li>Date: {date}</li>
           <li>state: {state}</li>
-          <li>agree to receive shares: {shares ? 'true' : 'false'}</li>
+          <li>agree to receive shares: {`${shares}`}</li>
         </ul>
       </li>
     );

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import MainPage from './MainPage';
 
-test('All cards are rendered', () => {
+test('All cards are rendered', async () => {
   render(<MainPage />);
-  const userCards = screen.getAllByRole('img');
-  expect(userCards.length).toBe(10);
+  const userCards = await screen.findAllByRole('img');
+  expect(userCards.length).toBe(20);
 });

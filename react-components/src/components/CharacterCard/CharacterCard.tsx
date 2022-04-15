@@ -32,7 +32,7 @@ class CharacterCard extends React.Component<ICharacterCardProps, ICharacterCardS
 
     return (
       <>
-        {this.state.isModalHidden || (
+        {!this.state.isModalHidden && (
           <CharacterModal
             characterCardData={this.props.characterCardData}
             closeModal={this.closeModal}

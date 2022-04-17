@@ -1,8 +1,6 @@
-export default function convertingQueryParametersToString<T>(parameters: T): string {
-  if (parameters !== undefined && parameters !== Object(parameters)) {
-    throw new Error('parameters is not object');
-  }
+import { ICharacterParameters } from '../types/interfaces';
 
+function convertingQueryParametersToString(parameters: ICharacterParameters | void): string {
   if (parameters === undefined || Object.keys(parameters).length === 0) {
     return '';
   } else {
@@ -10,3 +8,5 @@ export default function convertingQueryParametersToString<T>(parameters: T): str
     return `?${arrayParameters.map((parameter) => parameter.join('=')).join('&')}`;
   }
 }
+
+export default convertingQueryParametersToString;

@@ -11,7 +11,7 @@ interface IMainPageProps {
 
 interface IMainPageState {
   isLoading: boolean;
-  name: string;
+  searchBarValue: string;
   characterCards: Array<ICharacter>;
 }
 
@@ -20,7 +20,7 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
     super(props);
     this.state = {
       isLoading: true,
-      name: '',
+      searchBarValue: '',
       characterCards: [],
     };
   }
@@ -30,7 +30,7 @@ class MainPage extends React.Component<IMainPageProps, IMainPageState> {
     const characterCards = await RickAndMortyAPI.getAllCharacters({ name: searchBarValue });
     this.setState({
       isLoading: false,
-      name: searchBarValue,
+      searchBarValue,
       characterCards: characterCards.results,
     });
   };

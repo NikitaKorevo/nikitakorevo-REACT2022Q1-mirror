@@ -1,58 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './mainPage.module.css';
 import { ICharacter } from '../../types/interfaces';
 import RickAndMortyAPI from '../../API/RickAndMortyAPI';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
 
-interface IMainPageProps {
-  [key: string]: undefined;
-}
+function MainPage(): JSX.Element {
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchBarValue, setSearchBarValue] = useState('');
+  const [characterCards, setCharacterCards] = useState<Array<ICharacter>>([]);
 
-interface IMainPageState {
-  isLoading: boolean;
-  searchBarValue: string;
-  characterCards: Array<ICharacter>;
-}
-
-class MainPage extends React.Component<IMainPageProps, IMainPageState> {
-  constructor(props: IMainPageProps) {
-    super(props);
-    this.state = {
-      isLoading: true,
-      searchBarValue: '',
-      characterCards: [],
-    };
-  }
-
-  setSearchBarValue = async (searchBarValue: string) => {
-    this.setState({ isLoading: true });
+  const updateSearchBarValue = async (searchBarValue: string) => {
+    setIsLoading(true);
     const characterCards = await RickAndMortyAPI.getAllCharacters({ name: searchBarValue });
-    this.setState({
-      isLoading: false,
-      searchBarValue,
-      characterCards: characterCards.results,
-    });
+    setIsLoading(false);
+    setSearchBarValue(searchBarValue);
+    setCharacterCards(characterCards.results);
   };
 
-  render(): JSX.Element {
-    const characterCards = this.state.characterCards.map((characterCard: ICharacter) => {
-      return <CharacterCard key={characterCard.id} characterCardData={characterCard} />;
-    });
+  const characterCardsElements = characterCards.map((characterCard: ICharacter) => {
+    return <CharacterCard key={characterCard.id} characterCardData={characterCard} />;
+  });
 
-    return (
-      <div className={styles.mainPage}>
-        <SearchBar setSearchBarValue={this.setSearchBarValue} />
-
-        {this.state.isLoading ? (
-          <h2>Loading...</h2>
-        ) : (
-          <ul className={styles.userCards}>{characterCards}</ul>
-        )}
-        {!characterCards.length && !this.state.isLoading && <h2>{'Nothing found :('}</h2>}
-      </div>
-    );
-  }
+  return (
+    <div className={styles.mainPage}>
+      <SearchBar updateSearchBarValue={updateSearchBarValue} />
+      {characterCards.length === 0 && !isLoading && <h2>{'Nothing found :('}</h2>}
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <ul className={styles.userCards}>{characterCardsElements}</ul>
+      )}
+    </div>
+  );
 }
 
 export default MainPage;

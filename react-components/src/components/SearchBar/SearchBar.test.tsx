@@ -6,13 +6,13 @@ describe('SearchBar', () => {
   const mocFunction = jest.fn(() => null);
 
   test('SearchBar is rendered', () => {
-    render(<SearchBar setSearchBarValue={mocFunction} />);
+    render(<SearchBar updateSearchBarValue={mocFunction} />);
     const searchBarElement = screen.getByRole('searchbox');
     expect(searchBarElement).toBeInTheDocument();
   });
 
   test('changing the value in SearchBar', () => {
-    render(<SearchBar setSearchBarValue={mocFunction} />);
+    render(<SearchBar updateSearchBarValue={mocFunction} />);
     const searchBarElement = screen.getByRole('searchbox');
     searchBarElement.focus();
     userEvent.keyboard('test string');

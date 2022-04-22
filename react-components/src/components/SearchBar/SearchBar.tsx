@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './searchBar.module.css';
 
 interface ISearchBarProps {
-  setSearchBarValue: (key: string) => void;
+  updateSearchBarValue: (key: string) => void;
 }
 
 interface ISearchBarState {
@@ -20,7 +20,7 @@ class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
   componentDidMount(): void {
     const initialInputValue = localStorage.getItem('inputValue') || '';
     this.setState({ inputValue: initialInputValue });
-    this.props.setSearchBarValue(initialInputValue);
+    this.props.updateSearchBarValue(initialInputValue);
   }
 
   componentDidUpdate(): void {
@@ -34,7 +34,7 @@ class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
 
   handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-      this.props.setSearchBarValue(this.state.inputValue);
+      this.props.updateSearchBarValue(this.state.inputValue);
     }
   };
 

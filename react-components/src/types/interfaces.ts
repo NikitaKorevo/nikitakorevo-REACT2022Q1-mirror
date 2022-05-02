@@ -1,3 +1,7 @@
+export interface IState {
+  searchBarValue: string;
+}
+
 export interface IUserCard {
   id: number;
   name: string;

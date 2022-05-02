@@ -1,55 +1,36 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
+import { AppContext } from '../../store/context';
 
-interface ISearchBarProps {
-  updateSearchBarValue: (key: string) => void;
-}
+function SearchBar(): JSX.Element {
+  const [state, dispatch] = useContext(AppContext);
+  const [inputValue, setInputValue] = useState(state.searchBarValue);
 
-interface ISearchBarState {
-  inputValue: string;
-}
+  /*   useEffect(() => {
+    localStorage.setItem('inputValue', inputValue);
+  }, [inputValue]); */
 
-class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
-  constructor(props: ISearchBarProps) {
-    super(props);
-    this.state = {
-      inputValue: '',
-    };
-  }
-
-  componentDidMount(): void {
-    const initialInputValue = localStorage.getItem('inputValue') || '';
-    this.setState({ inputValue: initialInputValue });
-    this.props.updateSearchBarValue(initialInputValue);
-  }
-
-  componentDidUpdate(): void {
-    localStorage.setItem('inputValue', this.state.inputValue);
-  }
-
-  changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    this.setState({ inputValue: inputValue });
+    setInputValue(inputValue);
   };
 
-  handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-      this.props.updateSearchBarValue(this.state.inputValue);
+      dispatch({ type: 'changeSearchBarValue', payload: inputValue });
     }
   };
 
-  render(): JSX.Element {
-    return (
-      <input
-        className={styles.searchBar}
-        type="search"
-        value={this.state.inputValue}
-        onChange={this.changeInputValue}
-        placeholder="Morty Smith"
-        onKeyUp={this.handleKeyUpInput}
-      />
-    );
-  }
+  return (
+    <input
+      className={styles.searchBar}
+      type="search"
+      value={inputValue}
+      onChange={changeInputValue}
+      placeholder="Morty Smith"
+      onKeyUp={handleKeyUpInput}
+    />
+  );
 }
 
 export default SearchBar;

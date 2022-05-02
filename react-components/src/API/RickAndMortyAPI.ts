@@ -1,5 +1,4 @@
 import { BASE_URL_RICK_AND_MORTY_API } from '../constants/constants';
-
 import { ICharacterParameters, IAllCharacters } from '../types/interfaces';
 import convertingQueryParametersToString from '../utils/convertingQueryParametersToString';
 

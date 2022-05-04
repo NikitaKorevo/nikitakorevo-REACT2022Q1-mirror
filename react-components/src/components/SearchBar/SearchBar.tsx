@@ -6,9 +6,9 @@ function SearchBar(): JSX.Element {
   const [state, dispatch] = useContext(AppContext);
   const [inputValue, setInputValue] = useState(state.searchBarValue);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('inputValue', inputValue);
-  }, [inputValue]); */
+  }, [inputValue]);
 
   const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -17,7 +17,7 @@ function SearchBar(): JSX.Element {
 
   const handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-      dispatch({ type: 'changeSearchBarValue', payload: inputValue });
+      dispatch({ type: 'setSearchBarValue', payload: inputValue });
     }
   };
 

@@ -1,7 +1,3 @@
-export interface IState {
-  searchBarValue: string;
-}
-
 export interface IUserCard {
   id: number;
   name: string;
@@ -30,7 +26,7 @@ export interface IDeliveryCard {
   name: string;
   date: string;
   state: string;
-  photo: File;
+  photo: File | string;
   shares: boolean;
 }
 
@@ -71,4 +67,15 @@ export interface IAllCharacters {
     prev: null;
   };
   results: Array<ICharacter>;
+}
+
+export interface IDeliveryFormValues extends IDeliveryCard {
+  dataProcessing: boolean;
+}
+
+export interface IState {
+  searchBarValue: string;
+  characterCards: Array<ICharacter> | null;
+  deliveryCards: Array<IDeliveryCard>;
+  statusSelectValue: string;
 }

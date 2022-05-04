@@ -9,7 +9,7 @@ interface IDeliveryCardProps {
 class DeliveryCard extends React.Component<IDeliveryCardProps> {
   render(): JSX.Element {
     const { name, date, state, photo, shares } = this.props.deliveryCardData;
-    const photoUrl = URL.createObjectURL(photo);
+    const photoUrl = URL.createObjectURL(photo as File);
 
     return (
       <li className={styles.deliveryCard}>

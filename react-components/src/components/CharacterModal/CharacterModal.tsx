@@ -26,19 +26,12 @@ class CharacterModal extends React.Component<ICharacterModalProps> {
     root.removeChild(this.wrapper);
   }
 
-  closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const element = e.target as HTMLElement;
-    if (element.classList.contains(`${styles.backgroundModal}`)) {
-      this.props.closeModal();
-    }
-  };
-
   render() {
     const { image, name, gender, species, status, location } = this.props.characterCardData;
     this.wrapper.id = 'characterModal';
 
     return ReactDOM.createPortal(
-      <div className={styles.backgroundModal} onClick={this.closeModal}>
+      <div className={styles.backgroundModal} onClick={this.props.closeModal}>
         <div className={styles.characterModal}>
           <button className={styles.closeButton} onClick={this.props.closeModal}>
             &#10006;

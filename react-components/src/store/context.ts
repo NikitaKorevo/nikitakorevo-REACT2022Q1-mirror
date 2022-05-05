@@ -3,6 +3,9 @@ import { actionTypes } from '../types/types';
 import { IState } from '../types/interfaces';
 
 export const initialState: IState = {
+  amountAllPages: 0,
+  amountItemsPerPage: 20,
+  currentPage: 1,
   searchBarValue: localStorage.getItem('inputValue') || '',
   characterCards: null,
   deliveryCards: [],

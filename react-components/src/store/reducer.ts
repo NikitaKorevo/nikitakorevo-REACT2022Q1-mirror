@@ -5,10 +5,27 @@ export function appReducer(state: IState, action: actionTypes) {
   const { type, payload } = action;
 
   switch (type) {
+    case 'setAmountAllPages':
+      return {
+        ...state,
+        amountAllPages: payload,
+      };
+    case 'setAmountItemsPerPage':
+      return {
+        ...state,
+        amountItemsPerPage: payload,
+      };
+
     case 'setSearchBarValue':
       return {
         ...state,
         searchBarValue: payload,
+      };
+
+    case 'setCurrentPage':
+      return {
+        ...state,
+        currentPage: payload,
       };
 
     case 'setCharacterCards':
@@ -28,6 +45,7 @@ export function appReducer(state: IState, action: actionTypes) {
         ...state,
         statusSelectValue: payload,
       };
+
     default:
       return state;
   }

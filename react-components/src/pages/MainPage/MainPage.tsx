@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styles from './mainPage.module.css';
 import { ICharacter } from '../../types/interfaces';
 import RickAndMortyAPI from '../../API/RickAndMortyAPI';
+import { AMOUNT_iTEMS_PER_PAGE_RICK_AND_MORTY_API } from '../../constants/constants';
 import { AppContext } from '../../store/context';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
@@ -19,16 +20,28 @@ function MainPage(): JSX.Element {
       (async () => {
         setIsLoading(true);
 
-        const characterCards = await RickAndMortyAPI.getAllCharacters({
-          name: state.searchBarValue,
-          status: state.statusSelectValue,
-        });
+        const arrayRequests = [];
+        const amountRequests = state.amountItemsPerPage / AMOUNT_iTEMS_PER_PAGE_RICK_AND_MORTY_API;
 
-        dispatch({ type: 'setCharacterCards', payload: characterCards.results });
+        for (let i = 0; i < amountRequests; i++) {
+          arrayRequests.unshift(
+            RickAndMortyAPI.getAllCharacters({
+              page: state.currentPage * amountRequests - i,
+              name: state.searchBarValue,
+              status: state.statusSelectValue,
+            })
+          );
+        }
+        const response = await Promise.all(arrayRequests);
+        const amountAllPages = response[0].info.pages || 0;
+        const characterCards = response.map((el) => el.results).flat();
+
+        dispatch({ type: 'setAmountAllPages', payload: amountAllPages });
+        dispatch({ type: 'setCharacterCards', payload: characterCards });
         setIsLoading(false);
       })();
     }
-  }, [state.searchBarValue, state.statusSelectValue]);
+  }, [state.amountItemsPerPage, state.currentPage, state.searchBarValue, state.statusSelectValue]);
 
   useEffect(() => {
     setSkipComponentDidMount(false);

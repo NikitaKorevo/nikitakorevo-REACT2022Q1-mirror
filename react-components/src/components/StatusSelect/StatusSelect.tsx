@@ -6,6 +6,7 @@ function StatusSelect() {
   const [state, dispatch] = useContext(AppContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch({ type: 'setCurrentPage', payload: 1 });
     dispatch({ type: 'setStatusSelectValue', payload: e.target.value });
   };
 

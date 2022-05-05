@@ -17,6 +17,7 @@ function SearchBar(): JSX.Element {
 
   const handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+      dispatch({ type: 'setCurrentPage', payload: 1 });
       dispatch({ type: 'setSearchBarValue', payload: inputValue });
     }
   };

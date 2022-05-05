@@ -10,6 +10,12 @@ class RickAndMortyAPI {
 
     if (!data.results) {
       return {
+        info: {
+          count: null,
+          next: null,
+          pages: null,
+          prev: null,
+        },
         results: [],
       };
     }

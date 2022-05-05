@@ -36,6 +36,7 @@ export interface ICharacterParameters {
   species?: string;
   type?: string;
   gender?: 'female' | 'male' | 'genderless' | 'unknown';
+  page?: number;
 }
 
 export interface ICharacter {
@@ -74,6 +75,9 @@ export interface IDeliveryFormValues extends IDeliveryCard {
 }
 
 export interface IState {
+  amountAllPages: number;
+  amountItemsPerPage: number;
+  currentPage: number;
   searchBarValue: string;
   characterCards: Array<ICharacter> | null;
   deliveryCards: Array<IDeliveryCard>;

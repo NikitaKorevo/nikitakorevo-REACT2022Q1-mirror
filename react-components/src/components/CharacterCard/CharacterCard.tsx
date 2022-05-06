@@ -1,55 +1,31 @@
 import React from 'react';
-import { ICharacter } from '../../types/interfaces';
-import CharacterModal from '../CharacterModal/CharacterModal';
 import styles from './characterCard.module.css';
+import { generatePath, useNavigate } from 'react-router-dom';
+import { ICharacter } from '../../types/interfaces';
+import ROUTES from '../../constants/routes';
 
 interface ICharacterCardProps {
   characterCardData: ICharacter;
 }
 
-interface ICharacterCardState {
-  isModalHidden: boolean;
-}
+function CharacterCard(props: ICharacterCardProps) {
+  const { id, image, name, gender, species } = props.characterCardData;
+  const navigate = useNavigate();
 
-class CharacterCard extends React.Component<ICharacterCardProps, ICharacterCardState> {
-  constructor(props: ICharacterCardProps) {
-    super(props);
-    this.state = {
-      isModalHidden: true,
-    };
-  }
-
-  closeModal = () => {
-    this.setState({ isModalHidden: true });
+  const handleClick = () => {
+    navigate(generatePath(`${ROUTES.DETAILED_CHARACTER_CARD}/:id`, { id: String(id) }));
   };
 
-  openModal = () => {
-    this.setState({ isModalHidden: false });
-  };
-
-  render() {
-    const { image, name, gender, species } = this.props.characterCardData;
-
-    return (
-      <>
-        {!this.state.isModalHidden && (
-          <CharacterModal
-            characterCardData={this.props.characterCardData}
-            closeModal={this.closeModal}
-          />
-        )}
-
-        <li className={styles.characterCard} onClick={this.openModal}>
-          <img className={styles.avatar} src={image} alt="avatar" />
-          <h2 className={styles.name}>{name}</h2>
-          <ul className={styles.description}>
-            <li>gender: {gender}</li>
-            <li>species: {species}</li>
-          </ul>
-        </li>
-      </>
-    );
-  }
+  return (
+    <li className={styles.characterCard} onClick={handleClick}>
+      <img className={styles.avatar} src={image} alt="avatar" />
+      <h2 className={styles.name}>{name}</h2>
+      <ul className={styles.description}>
+        <li>gender: {gender}</li>
+        <li>species: {species}</li>
+      </ul>
+    </li>
+  );
 }
 
 export default CharacterCard;

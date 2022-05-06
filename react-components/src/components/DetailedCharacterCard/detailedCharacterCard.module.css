@@ -1,39 +1,14 @@
-.backgroundModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-}
-
-.characterModal {
+.detailedCharacterCard {
+  box-sizing: border-box;
   position: relative;
   display: flex;
   gap: 15px;
-  box-sizing: border-box;
   width: calc(100% - 30px);
   max-width: 800px;
+  margin: 15px auto;
   padding: 50px 15px;
   background-color: #2d333b;
   border-radius: 10px;
-}
-
-.closeButton {
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  top: 15px;
-  right: 15px;
-}
-
-.closeButton:hover {
-  cursor: pointer;
 }
 
 .avatar {
@@ -49,7 +24,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .characterModal {
+  .detailedCharacterCard {
     flex-direction: column;
     max-width: 400px;
   }

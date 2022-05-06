@@ -1,5 +1,5 @@
 import { BASE_URL_RICK_AND_MORTY_API } from '../constants/constants';
-import { ICharacterParameters, IAllCharacters } from '../types/interfaces';
+import { ICharacterParameters, IAllCharacters, ICharacter } from '../types/interfaces';
 import convertingQueryParametersToString from '../utils/convertingQueryParametersToString';
 
 class RickAndMortyAPI {
@@ -19,6 +19,12 @@ class RickAndMortyAPI {
         results: [],
       };
     }
+    return data;
+  }
+
+  static async getSingleCharacter(id: number) {
+    const response = await fetch(`${BASE_URL_RICK_AND_MORTY_API}/character/${id}`);
+    const data: ICharacter = await response.json();
     return data;
   }
 }

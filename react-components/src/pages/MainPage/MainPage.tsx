@@ -5,16 +5,14 @@ import RickAndMortyAPI from '../../API/RickAndMortyAPI';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
 
-function MainPage(): JSX.Element {
+const MainPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [searchBarValue, setSearchBarValue] = useState('');
   const [characterCards, setCharacterCards] = useState<Array<ICharacter>>([]);
 
   const updateSearchBarValue = async (searchBarValue: string) => {
     setIsLoading(true);
     const characterCards = await RickAndMortyAPI.getAllCharacters({ name: searchBarValue });
     setIsLoading(false);
-    setSearchBarValue(searchBarValue);
     setCharacterCards(characterCards.results);
   };
 
@@ -33,6 +31,6 @@ function MainPage(): JSX.Element {
       )}
     </div>
   );
-}
+};
 
 export default MainPage;

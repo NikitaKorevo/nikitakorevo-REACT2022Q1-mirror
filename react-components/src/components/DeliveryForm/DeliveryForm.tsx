@@ -9,33 +9,20 @@ interface IDeliveryFormProps {
   addDeliveryCard: (key: IDeliveryCard) => void;
 }
 
-function DeliveryForm(props: IDeliveryFormProps) {
-  const [isErrorsHidden, setIsErrorsHidden] = useState<boolean>();
+const DeliveryForm: React.FC<IDeliveryFormProps> = ({ addDeliveryCard }) => {
   const {
     register,
-    formState: { errors, isValid, isDirty, submitCount, isSubmitSuccessful },
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm({
     defaultValues: { ...DEFAULT_VALUES_DELIVERY_FORM },
   });
 
-  useEffect(() => {
-    setIsErrorsHidden(false);
-  }, [submitCount]);
-
-  useEffect(() => {
-    setIsErrorsHidden(isSubmitSuccessful);
-  }, [isSubmitSuccessful]);
-
-  useEffect(() => {
-    setIsErrorsHidden(true);
-  }, []);
-
   const handleClickSubmitButton = (inputData: FieldValues) => {
     const { name, date, state, photo, shares } = inputData;
 
-    props.addDeliveryCard({
+    addDeliveryCard({
       name,
       date,
       state,
@@ -43,7 +30,6 @@ function DeliveryForm(props: IDeliveryFormProps) {
       shares,
     });
     reset({ ...DEFAULT_VALUES_DELIVERY_FORM }, { keepSubmitCount: true });
-    setIsErrorsHidden(true);
   };
 
   return (
@@ -128,13 +114,13 @@ function DeliveryForm(props: IDeliveryFormProps) {
       <button
         type="submit"
         name="submitButton"
-        disabled={isErrorsHidden ? !isDirty : !isValid}
+        disabled={!!Object.keys(errors).length}
         data-testid="submitButton"
       >
         add delivery card
       </button>
     </form>
   );
-}
+};
 
 export default DeliveryForm;

@@ -5,13 +5,12 @@ import RickAndMortyAPI from '../../API/RickAndMortyAPI';
 import { ICharacter } from '../../types/interfaces';
 
 function DetailedCharacterCard() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [cardData, setCardData] = useState<ICharacter>();
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
       setCardData(await RickAndMortyAPI.getSingleCharacter(id ? +id : 1));
       setIsLoading(false);
     })();

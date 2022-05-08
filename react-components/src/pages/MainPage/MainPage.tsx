@@ -9,7 +9,7 @@ import CharacterCard from '../../components/CharacterCard/CharacterCard';
 import StatusSelect from '../../components/StatusSelect/StatusSelect';
 import Pagination from '../../components/Pagination/Pagination';
 
-function MainPage(): JSX.Element {
+const MainPage: React.FC = () => {
   const [state, dispatch] = useContext(AppContext);
   const [skipComponentDidMount, setSkipComponentDidMount] = useState(true);
   const [isDataLoaded] = useState(state.characterCards !== null);
@@ -65,6 +65,6 @@ function MainPage(): JSX.Element {
       <Pagination />
     </div>
   );
-}
+};
 
 export default MainPage;

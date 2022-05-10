@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styles from './detailedCharacterCard.module.css';
 import { useParams } from 'react-router-dom';
-/* import RickAndMortyAPI from '../../API/RickAndMortyAPI';
-import { ICharacter } from '../../types/interfaces'; */
 import { getSingleCharacterAPI } from '../../store/reducers/actionCreators';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
-function DetailedCharacterCard() {
-  const detailedCharacterCard = useAppSelector((state) => state.detailedCharacterCard);
+const DetailedCharacterCard: React.FC = () => {
+  const { detailedCharacterCard } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  /*  const [cardData, setCardData] = useState<ICharacter | null>(null); */
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
-      /* setCardData(await RickAndMortyAPI.getSingleCharacter(id ? +id : 1)); */
-      /* dispatch(getSingleCharacter(id ? +id : 1)); */
       await dispatch(getSingleCharacterAPI(id ? +id : 1));
       setIsLoading(false);
     })();
@@ -44,6 +39,6 @@ function DetailedCharacterCard() {
       </div>
     </div>
   );
-}
+};
 
 export default DetailedCharacterCard;

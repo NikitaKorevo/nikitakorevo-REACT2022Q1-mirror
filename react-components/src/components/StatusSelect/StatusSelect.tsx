@@ -1,18 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import styles from './statusSelect.module.css';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { appSlice } from '../../store/reducers/appSlice';
-import styles from './statusSelect.module.css';
-/* import { AppContext } from '../../store/context'; */
 
-function StatusSelect() {
-  /* const [state, dispatch] = useContext(AppContext); */
+const StatusSelect: React.FC = () => {
   const { statusSelectValue } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   const { setCurrentPage, setStatusSelectValue } = appSlice.actions;
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    /* dispatch({ type: 'setCurrentPage', payload: 1 });
-    dispatch({ type: 'setStatusSelectValue', payload: e.target.value }); */
     dispatch(setCurrentPage(1));
     dispatch(setStatusSelectValue(e.target.value));
   };
@@ -33,6 +29,6 @@ function StatusSelect() {
       </select>
     </div>
   );
-}
+};
 
 export default StatusSelect;

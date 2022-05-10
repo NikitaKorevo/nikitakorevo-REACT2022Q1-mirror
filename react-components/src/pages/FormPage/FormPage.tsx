@@ -1,21 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './formPage.module.css';
 import { IDeliveryCard } from '../../types/interfaces';
 import DeliveryForm from '../../components/DeliveryForm/DeliveryForm';
 import DeliveryCard from '../../components/DeliveryCard/DeliveryCard';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { appSlice } from '../../store/reducers/appSlice';
-/* import { AppContext } from '../../store/context'; */
 
-function FormPage() {
-  /* const [state, dispatch] = useContext(AppContext); */
+const FormPage: React.FC = () => {
   const { deliveryCards } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   const { setDeliveryCards } = appSlice.actions;
   const [isStatusCardHidden, setIsStatusCardHidden] = useState(true);
 
   const addDeliveryCard = (deliveryCard: IDeliveryCard): void => {
-    /* dispatch({ type: 'setDeliveryCards', payload: [...deliveryCards, deliveryCard] }); */
     dispatch(setDeliveryCards([...deliveryCards, deliveryCard]));
     setIsStatusCardHidden(false);
 
@@ -35,6 +32,6 @@ function FormPage() {
       <ul className={styles.deliveryCards}>{deliveryCardsElement}</ul>
     </div>
   );
-}
+};
 
 export default FormPage;

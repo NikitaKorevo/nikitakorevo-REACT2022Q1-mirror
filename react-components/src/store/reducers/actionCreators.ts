@@ -4,7 +4,7 @@ import { IAllCharacters, ICharacter, ICharacterParameters } from '../../types/in
 import convertingQueryParametersToString from '../../utils/convertingQueryParametersToString';
 
 export const getAllCharactersAPI = createAsyncThunk(
-  'app/getAllCharactersAPI',
+  'getAllCharactersAPI',
   async (arrayParameters: Array<ICharacterParameters>) => {
     async function getAllCharacters(parameters: ICharacterParameters) {
       const stringParameters = convertingQueryParametersToString(parameters);
@@ -40,7 +40,7 @@ export const getAllCharactersAPI = createAsyncThunk(
 );
 
 export const getSingleCharacterAPI = createAsyncThunk(
-  'app/getSingleCharacterAPI',
+  'getSingleCharacterAPI',
   async (id: number) => {
     const response = await fetch(`${BASE_URL_RICK_AND_MORTY_API}/character/${id}`);
     const data: ICharacter = await response.json();

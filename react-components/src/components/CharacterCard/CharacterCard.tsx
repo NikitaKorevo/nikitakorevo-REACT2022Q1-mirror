@@ -8,8 +8,8 @@ interface ICharacterCardProps {
   characterCardData: ICharacter;
 }
 
-function CharacterCard(props: ICharacterCardProps) {
-  const { id, image, name, gender, species } = props.characterCardData;
+const CharacterCard: React.FC<ICharacterCardProps> = ({ characterCardData }) => {
+  const { id, image, name, gender, species } = characterCardData;
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -26,6 +26,6 @@ function CharacterCard(props: ICharacterCardProps) {
       </ul>
     </li>
   );
-}
+};
 
 export default CharacterCard;

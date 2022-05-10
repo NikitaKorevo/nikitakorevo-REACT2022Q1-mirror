@@ -7,15 +7,12 @@ import CharacterCard from '../../components/CharacterCard/CharacterCard';
 import StatusSelect from '../../components/StatusSelect/StatusSelect';
 import Pagination from '../../components/Pagination/Pagination';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { appSlice } from '../../store/reducers/appSlice';
 import { getAllCharactersAPI } from '../../store/reducers/actionCreators';
 
 const MainPage: React.FC = () => {
-  /* const [state, dispatch] = useContext(AppContext); */
   const { amountItemsPerPage, currentPage, searchBarValue, characterCards, statusSelectValue } =
     useAppSelector((state) => state);
   const dispatch = useAppDispatch();
-  const { setAmountAllPages, setCharacterCards } = appSlice.actions;
   const [skipComponentDidMount, setSkipComponentDidMount] = useState(true);
   const [isDataLoaded] = useState(characterCards !== null);
   const [isLoading, setIsLoading] = useState(false);

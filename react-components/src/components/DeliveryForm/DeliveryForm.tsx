@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './deliveryForm.module.css';
 import { IDeliveryCard } from '../../types/interfaces';
 import { useForm } from 'react-hook-form';

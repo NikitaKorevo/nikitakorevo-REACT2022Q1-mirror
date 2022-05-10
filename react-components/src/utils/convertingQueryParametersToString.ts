@@ -1,6 +1,8 @@
-import { ICharacterParameters } from '../types/interfaces';
+interface IParameters {
+  [key: string]: string | number | boolean | undefined;
+}
 
-function convertingQueryParametersToString(parameters: ICharacterParameters | void): string {
+function convertingQueryParametersToString(parameters: IParameters | void): string {
   if (parameters === undefined || Object.keys(parameters).length === 0) {
     return '';
   } else {

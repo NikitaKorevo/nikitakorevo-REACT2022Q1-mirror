@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
-import { AppContext } from '../../store/context';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { appSlice } from '../../store/reducers/appSlice';
+/* import { AppContext } from '../../store/context'; */
 
 function SearchBar(): JSX.Element {
-  const [state, dispatch] = useContext(AppContext);
-  const [inputValue, setInputValue] = useState(state.searchBarValue);
+  /* const [state, dispatch] = useContext(AppContext); */
+  const { searchBarValue } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+  const { setCurrentPage, setSearchBarValue } = appSlice.actions;
+  const [inputValue, setInputValue] = useState(searchBarValue);
 
   useEffect(() => {
     localStorage.setItem('inputValue', inputValue);
@@ -17,8 +22,10 @@ function SearchBar(): JSX.Element {
 
   const handleKeyUpInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-      dispatch({ type: 'setCurrentPage', payload: 1 });
-      dispatch({ type: 'setSearchBarValue', payload: inputValue });
+      /* dispatch({ type: 'setCurrentPage', payload: 1 });
+      dispatch({ type: 'setSearchBarValue', payload: inputValue }); */
+      dispatch(setCurrentPage(1));
+      dispatch(setSearchBarValue(inputValue));
     }
   };
 

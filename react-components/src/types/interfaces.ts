@@ -31,6 +31,7 @@ export interface IDeliveryCard {
 }
 
 export interface ICharacterParameters {
+  [key: string]: string | number | undefined;
   name?: string;
   status?: string;
   species?: string;
@@ -72,14 +73,4 @@ export interface IAllCharacters {
 
 export interface IDeliveryFormValues extends IDeliveryCard {
   dataProcessing: boolean;
-}
-
-export interface IState {
-  amountAllPages: number;
-  amountItemsPerPage: number;
-  currentPage: number;
-  searchBarValue: string;
-  characterCards: Array<ICharacter> | null;
-  deliveryCards: Array<IDeliveryCard>;
-  statusSelectValue: string;
 }

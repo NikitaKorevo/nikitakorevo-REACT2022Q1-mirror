@@ -3,14 +3,20 @@ import styles from './formPage.module.css';
 import { IDeliveryCard } from '../../types/interfaces';
 import DeliveryForm from '../../components/DeliveryForm/DeliveryForm';
 import DeliveryCard from '../../components/DeliveryCard/DeliveryCard';
-import { AppContext } from '../../store/context';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { appSlice } from '../../store/reducers/appSlice';
+/* import { AppContext } from '../../store/context'; */
 
 function FormPage() {
-  const [state, dispatch] = useContext(AppContext);
+  /* const [state, dispatch] = useContext(AppContext); */
+  const { deliveryCards } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch();
+  const { setDeliveryCards } = appSlice.actions;
   const [isStatusCardHidden, setIsStatusCardHidden] = useState(true);
 
   const addDeliveryCard = (deliveryCard: IDeliveryCard): void => {
-    dispatch({ type: 'setDeliveryCards', payload: [...state.deliveryCards, deliveryCard] });
+    /* dispatch({ type: 'setDeliveryCards', payload: [...deliveryCards, deliveryCard] }); */
+    dispatch(setDeliveryCards([...deliveryCards, deliveryCard]));
     setIsStatusCardHidden(false);
 
     setTimeout(() => {
@@ -18,7 +24,7 @@ function FormPage() {
     }, 2000);
   };
 
-  const deliveryCardsElement = state.deliveryCards.map((deliveryCard, index) => {
+  const deliveryCardsElement = deliveryCards.map((deliveryCard, index) => {
     return <DeliveryCard key={index} deliveryCardData={deliveryCard} />;
   });
 

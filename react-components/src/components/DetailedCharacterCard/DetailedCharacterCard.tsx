@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import styles from './detailedCharacterCard.module.css';
 import { useParams } from 'react-router-dom';
-import RickAndMortyAPI from '../../API/RickAndMortyAPI';
-import { ICharacter } from '../../types/interfaces';
+/* import RickAndMortyAPI from '../../API/RickAndMortyAPI';
+import { ICharacter } from '../../types/interfaces'; */
+import { getSingleCharacterAPI } from '../../store/reducers/actionCreators';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
 function DetailedCharacterCard() {
+  const detailedCharacterCard = useAppSelector((state) => state.detailedCharacterCard);
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  const [cardData, setCardData] = useState<ICharacter>();
+  /*  const [cardData, setCardData] = useState<ICharacter | null>(null); */
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
-      setCardData(await RickAndMortyAPI.getSingleCharacter(id ? +id : 1));
+      /* setCardData(await RickAndMortyAPI.getSingleCharacter(id ? +id : 1)); */
+      /* dispatch(getSingleCharacter(id ? +id : 1)); */
+      await dispatch(getSingleCharacterAPI(id ? +id : 1));
       setIsLoading(false);
     })();
-  }, [id]);
+  }, [id, dispatch]);
 
   if (isLoading) {
     return (
@@ -26,14 +32,14 @@ function DetailedCharacterCard() {
 
   return (
     <div className={styles.detailedCharacterCard}>
-      <img className={styles.avatar} src={cardData?.image} alt="avatar" />
+      <img className={styles.avatar} src={detailedCharacterCard?.image} alt="avatar" />
       <div>
-        <h2 className={styles.name}>{cardData?.name}</h2>
+        <h2 className={styles.name}>{detailedCharacterCard?.name}</h2>
         <ul className={styles.description}>
-          <li>gender: {cardData?.gender}</li>
-          <li>species: {cardData?.species}</li>
-          <li>status: {cardData?.status}</li>
-          <li>location: {cardData?.location.name}</li>
+          <li>gender: {detailedCharacterCard?.gender}</li>
+          <li>species: {detailedCharacterCard?.species}</li>
+          <li>status: {detailedCharacterCard?.status}</li>
+          <li>location: {detailedCharacterCard?.location.name}</li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/nikitakorevo-REACT2022Q1/module06/static/css/main.c46c984a.css",
+    "main.js": "/nikitakorevo-REACT2022Q1/module06/static/js/main.762e0085.js",
+    "index.html": "/nikitakorevo-REACT2022Q1/module06/index.html",
+    "static/media/search.svg": "/nikitakorevo-REACT2022Q1/module06/static/media/search.b4c952303031e4aa77db.svg",
+    "main.c46c984a.css.map": "/nikitakorevo-REACT2022Q1/module06/static/css/main.c46c984a.css.map",
+    "main.762e0085.js.map": "/nikitakorevo-REACT2022Q1/module06/static/js/main.762e0085.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c46c984a.css",
+    "static/js/main.762e0085.js"
+  ]
+}

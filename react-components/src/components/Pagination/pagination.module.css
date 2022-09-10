@@ -1,0 +1,19 @@
+.pagination {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.output {
+  padding: 0 5px;
+}
+
+.select {
+  height: 26px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #444c56;
+}
+
+.select:focus {
+  border: 1px solid #ec775c;
+}

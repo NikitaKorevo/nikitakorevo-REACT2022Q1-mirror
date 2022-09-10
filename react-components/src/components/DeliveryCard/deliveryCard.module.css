@@ -1,0 +1,16 @@
+.deliveryCard {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #444c56;
+  border-radius: 10px;
+  overflow-wrap: break-word;
+}
+
+.photo {
+  width: 100%;
+}
+
+.name {
+  text-align: center;
+  white-space: pre;
+}

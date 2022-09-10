@@ -1,0 +1,16 @@
+.title {
+  font: 400 16px/120% 'Roboto', sans-serif;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.select {
+  height: 26px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #444c56;
+}
+
+.select:focus {
+  border: 1px solid #ec775c;
+}

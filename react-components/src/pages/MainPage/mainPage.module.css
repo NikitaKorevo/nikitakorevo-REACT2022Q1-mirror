@@ -1,0 +1,14 @@
+.mainPage {
+  max-width: 1400px;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+}
+
+.userCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  list-style-type: none;
+  padding: 0;
+}
